@@ -1,16 +1,114 @@
-<div class="control-section" style="padding-top:100px">
-  <div class="col-lg-9">
-    <div class="control_wrapper">
-      <ejs-uploader
-        #defaultupload
-        id="defaultfileupload"
-        [asyncSettings]="path"
-        [dropArea]="dropElement"
-        (removing)="onFileRemove($event)"
-        (uploading)="onDocumentUploading($event)"
-        (success)="onUploadSuccess($event)"
-        (fileListRendering)="fileListRendering($event)"
-      ></ejs-uploader>
+<div class="control-section" style="margin-top:100px">
+  <button (click)="AddUser(users.length)">Add User</button>
+  <div class="col-lg-8 content-wrapper" *ngFor="let user of users">
+    <div id="content" style="margin: 0 auto; width:500px">
+      <div style="padding-bottom:20px"></div>
+      <span class="contactname"> User id : {{ user.Id }} </span>
+      <input
+        class="textBoxSearchRecipients e-input"
+        maxlength="250"
+        minlength="1"
+        type="text"
+        placeholder="Signatory UserName"
+        name="UserName{{ user.Id }}"
+        id="UserName{{ user.Id }}"
+        [(ngModel)]="user.UserName"
+        ngModel
+        #UserName="ngModel"
+        autocomplete="off"
+        required
+      />
+
+      <ul>
+        <li
+          *ngFor="let data of sportsData"
+          (click)="selectData(data, user)"
+          style="border : 1px solid black; width : 200px; height :50px"
+        >
+          {{ data.Email }} || {{ data.UserName }}
+        </li>
+      </ul>
+
+      <input
+        class="textBoxSearchRecipients e-input"
+        maxlength="250"
+        minlength="1"
+        type="text"
+        placeholder="Signatory user email"
+        name="UserEmail{{ user.Id }}"
+        id="UserEmail{{ user.Id }}"
+        [(ngModel)]="user.Email"
+        ngModel
+        #UserEmail="ngModel"
+        autocomplete="off"
+        required
+      />
+
+      <ul>
+        <li
+          *ngFor="let data of sportsData"
+          (click)="selectData(data, user)"
+          style="border : 1px solid black; width : 200px; height :50px"
+        >
+          {{ data.Email }} || {{ data.UserName }}
+        </li>
+      </ul>
+
+      <!-- <ejs-autocomplete
+        id="games"
+        #sample
+        [dataSource]="sportsData"
+        [(value)]="user.UserName == null ? '' : user.UserName"
+        [placeholder]="waterMark"
+        [fields]="fieldsForSuggestionName"
+        (change)="onChange($event, user)"
+        (select)="selectedContact($event, user)"
+        (filtering)="filtering($event)"
+      >
+        <ng-template #headerTemplate> </ng-template>
+        <ng-template #itemTemplate let-data>
+          <div class="suggestitem">
+            <div class="contact-image">
+            
+            </div>
+            <div class="contactdetail">
+              <span class="contactname"> User name : {{ data.UserName }} </span>
+              <span class="contactemail">Email : {{ data.Email }}</span>
+            </div>
+          </div>
+        </ng-template>
+      </ejs-autocomplete> -->
+
+      <!-- <ejs-autocomplete
+        id="games"
+        #sample
+        [dataSource]="sportsData"
+        [(value)]="user.Email == null ? '' : user.Email"
+        [placeholder]="waterMark1"
+        [fields]="fieldsForSuggestionEmail"
+        (change)="onChange($event, user)"
+        (select)="selectedContact($event, user)"
+        (filtering)="filtering($event)"
+      >
+        <ng-template #headerTemplate> </ng-template>
+        <ng-template #itemTemplate let-data>
+          <div class="suggestitem">
+            <div class="contact-image"></div>
+            <div class="contactdetail">
+              <span class="contactname"> User name : {{ data.UserName }}</span>
+              <span class="contactemail">Email : {{ data.Email }}</span>
+            </div>
+          </div>
+        </ng-template>
+      </ejs-autocomplete> -->
     </div>
   </div>
+</div>
+<u>
+  .................................................................................</u
+>
+<div *ngFor="let user of users">
+  <div style="padding-bottom:20px"></div>
+  <div>User name : {{ user.UserName }}</div>
+  <div>Email : {{ user.Email }}</div>
 </div>
