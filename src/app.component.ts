@@ -1,4 +1,11 @@
-import { Component, ViewChild, ViewEncapsulation, Inject } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ViewEncapsulation,
+  Inject,
+  ElementRef,
+  HostListener,
+} from '@angular/core';
 
 /**
  * Default Uploader Default Component
@@ -10,6 +17,9 @@ import { Component, ViewChild, ViewEncapsulation, Inject } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
+  constructor(private elementRef: ElementRef) {}
+  public searchResult: Object[] = [];
+  selectedIndex = -1;
   // defined the array of data
   public sportsData: Object[] = [
     { Id: 1, Email: 'k@gmail.com', UserName: 'American' },
@@ -74,6 +84,7 @@ export class AppComponent {
   // }
 
   selectData(selectData: any, user: any) {
+    debugger;
     if (selectData) {
       this.users.forEach((x) => {
         if (x.Id == user.Id) {
@@ -81,6 +92,7 @@ export class AppComponent {
           x.Email = selectData.Email;
         }
       });
+      // this.searchResult = [];
     }
   }
 
@@ -94,5 +106,31 @@ export class AppComponent {
 
   AddUser(length: number) {
     this.users.push({ Id: length + 1, Email: '', UserName: '' });
+  }
+
+  modelChanged(event: any, user: any) {
+    console.log(event);
+    console.log(user);
+    this.sportsData = this.sportsData.filter((x: any) => {
+      x.Email.includes(user.Email);
+    });
+    // if (user.UserName === '' && user.Email === '') {
+    //   this.searchResult = [];
+    //   return;
+    // }
+
+    // const filteredResults = this.sportsData.filter((result: any) => {
+    //   if (user.UserName != '' && user.Email != '') {
+    //     result.UserName.includes(user.UserName) ||
+    //       result.Email.includes(user.Email);
+    //   } else if (user.UserName == '' && user.Email != '') {
+    //     result.Email.includes(user.Email);
+    //   } else if (user.UserName != '' && user.Email == '') {
+    //     result.Email.includes(user.UserName);
+    //   }
+    // });
+
+    // this.searchResult = filteredResults;
+    // this.selectedIndex = -1;
   }
 }

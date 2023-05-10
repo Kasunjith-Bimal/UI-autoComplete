@@ -17,14 +17,11 @@
         #UserName="ngModel"
         autocomplete="off"
         required
+        (ngModelChange)="modelChanged($event,user)"
       />
 
       <ul>
-        <li
-          *ngFor="let data of sportsData"
-          (click)="selectData(data, user)"
-          style="border : 1px solid black; width : 200px; height :50px"
-        >
+        <li *ngFor="let data of sportsData" (click)="selectData(data, user)">
           {{ data.Email }} || {{ data.UserName }}
         </li>
       </ul>
@@ -42,65 +39,14 @@
         #UserEmail="ngModel"
         autocomplete="off"
         required
+        (ngModelChange)="modelChanged($event,user)"
       />
 
       <ul>
-        <li
-          *ngFor="let data of sportsData"
-          (click)="selectData(data, user)"
-          style="border : 1px solid black; width : 200px; height :50px"
-        >
+        <li *ngFor="let data of sportsData" (click)="selectData(data, user)">
           {{ data.Email }} || {{ data.UserName }}
         </li>
       </ul>
-
-      <!-- <ejs-autocomplete
-        id="games"
-        #sample
-        [dataSource]="sportsData"
-        [(value)]="user.UserName == null ? '' : user.UserName"
-        [placeholder]="waterMark"
-        [fields]="fieldsForSuggestionName"
-        (change)="onChange($event, user)"
-        (select)="selectedContact($event, user)"
-        (filtering)="filtering($event)"
-      >
-        <ng-template #headerTemplate> </ng-template>
-        <ng-template #itemTemplate let-data>
-          <div class="suggestitem">
-            <div class="contact-image">
-            
-            </div>
-            <div class="contactdetail">
-              <span class="contactname"> User name : {{ data.UserName }} </span>
-              <span class="contactemail">Email : {{ data.Email }}</span>
-            </div>
-          </div>
-        </ng-template>
-      </ejs-autocomplete> -->
-
-      <!-- <ejs-autocomplete
-        id="games"
-        #sample
-        [dataSource]="sportsData"
-        [(value)]="user.Email == null ? '' : user.Email"
-        [placeholder]="waterMark1"
-        [fields]="fieldsForSuggestionEmail"
-        (change)="onChange($event, user)"
-        (select)="selectedContact($event, user)"
-        (filtering)="filtering($event)"
-      >
-        <ng-template #headerTemplate> </ng-template>
-        <ng-template #itemTemplate let-data>
-          <div class="suggestitem">
-            <div class="contact-image"></div>
-            <div class="contactdetail">
-              <span class="contactname"> User name : {{ data.UserName }}</span>
-              <span class="contactemail">Email : {{ data.Email }}</span>
-            </div>
-          </div>
-        </ng-template>
-      </ejs-autocomplete> -->
     </div>
   </div>
 </div>
