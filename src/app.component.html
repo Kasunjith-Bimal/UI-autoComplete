@@ -1,0 +1,16 @@
+<div class="control-section" style="padding-top:100px">
+  <div class="col-lg-9">
+    <div class="control_wrapper">
+      <ejs-uploader
+        #defaultupload
+        id="defaultfileupload"
+        [asyncSettings]="path"
+        [dropArea]="dropElement"
+        (removing)="onFileRemove($event)"
+        (uploading)="onDocumentUploading($event)"
+        (success)="onUploadSuccess($event)"
+        (fileListRendering)="fileListRendering($event)"
+      ></ejs-uploader>
+    </div>
+  </div>
+</div>
