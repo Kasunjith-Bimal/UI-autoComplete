@@ -112,7 +112,9 @@ export class AppComponent {
         if (x.Id == user.Id) {
           if ((type = 'userName')) {
             x.optionSelectedUserName = true;
+            x.optionSelectedEmail = true;
           } else {
+            x.optionSelectedUserName = true;
             x.optionSelectedEmail = true;
           }
           x.optionSelected = true;
