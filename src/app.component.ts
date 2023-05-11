@@ -37,9 +37,30 @@ export class AppComponent {
   ];
 
   public users: any[] = [
-    { Id: 1, Email: '', UserName: '', optionSelected: false },
-    { Id: 2, Email: '', UserName: '', optionSelected: false },
-    { Id: 3, Email: '', UserName: '', optionSelected: false },
+    {
+      Id: 1,
+      Email: '',
+      UserName: '',
+      optionSelected: false,
+      optionSelectedEmail: false,
+      optionSelectedUserName: false,
+    },
+    {
+      Id: 2,
+      Email: '',
+      UserName: '',
+      optionSelected: false,
+      optionSelectedEmail: false,
+      optionSelectedUserName: false,
+    },
+    {
+      Id: 3,
+      Email: '',
+      UserName: '',
+      optionSelected: false,
+      optionSelectedEmail: false,
+      optionSelectedUserName: false,
+    },
   ];
 
   //public fieldsForSuggestionName: Object = { value: 'UserName' };
@@ -84,11 +105,16 @@ export class AppComponent {
   //   }
   // }
 
-  selectData(selectData: any, user: any) {
+  selectData(selectData: any, user: any, type: string) {
     debugger;
     if (selectData) {
       this.users.forEach((x) => {
         if (x.Id == user.Id) {
+          if ((type = 'userName')) {
+            x.optionSelectedUserName = true;
+          } else {
+            x.optionSelectedEmail = true;
+          }
           x.optionSelected = true;
           x.UserName = selectData.UserName;
           x.Email = selectData.Email;
@@ -110,10 +136,15 @@ export class AppComponent {
     this.users.push({ Id: length + 1, Email: '', UserName: '' });
   }
 
-  modelChanged(event: any, user: any) {
+  modelChanged(event: any, user: any, type: string) {
     this.users.forEach((x) => {
       if (x.Id == user.Id) {
         x.optionSelected = false;
+        if ((type = 'userName')) {
+          x.optionSelectedUserName = false;
+        } else {
+          x.optionSelectedEmail = false;
+        }
       }
     });
     console.log(event);

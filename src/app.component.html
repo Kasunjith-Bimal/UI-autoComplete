@@ -17,13 +17,13 @@
         #UserName="ngModel"
         autocomplete="off"
         required
-        (ngModelChange)="modelChanged($event, user)"
+        (ngModelChange)="modelChanged($event, user, 'userName')"
       />
 
-      <ul *ngIf="user.UserName != '' && !user.optionSelected">
+      <ul *ngIf="user.UserName != '' && !user.optionSelectedUserName">
         <li
           *ngFor="let data of sportsData | filterPipeUserName: user.UserName"
-          (click)="selectData(data, user)"
+          (click)="selectData(data, user, 'userName')"
         >
           {{ data.Email }} || {{ data.UserName }}
         </li>
@@ -42,13 +42,13 @@
         #UserEmail="ngModel"
         autocomplete="off"
         required
-        (ngModelChange)="modelChanged($event, user)"
+        (ngModelChange)="modelChanged($event, user, 'Email')"
       />
 
-      <ul *ngIf="user.Email != '' && !user.optionSelected">
+      <ul *ngIf="user.Email != '' && !user.optionSelectedEmail">
         <li
           *ngFor="let data of sportsData | filterPipeEmail: user.Email"
-          (click)="selectData(data, user)"
+          (click)="selectData(data, user, 'Email')"
         >
           {{ data.Email }} || {{ data.UserName }}
         </li>
