@@ -1,6 +1,6 @@
 import { DropDownListModule } from '@syncfusion/ej2-angular-dropdowns';
 
-import { CheckBoxModule  } from '@syncfusion/ej2-angular-buttons';
+import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
 
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 
@@ -17,6 +17,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { NgModule } from '@angular/core';
 import { AppComponent } from '../app.component';
-@NgModule({ declarations: [ AppComponent ], imports: [ BrowserModule, CheckBoxModule, UploaderModule,       DialogModule, DropDownListModule, FormsModule, CommonModule, ReactiveFormsModule], providers: [], bootstrap: [AppComponent]
+import { FilterPipeUserNamePipe } from './filter-pipe-user-name.pipe';
+import { FilterPipeEmailPipe } from './filter-pipe-email.pipe';
+@NgModule({
+  declarations: [AppComponent, FilterPipeUserNamePipe, FilterPipeEmailPipe],
+  imports: [
+    BrowserModule,
+    CheckBoxModule,
+    UploaderModule,
+    DialogModule,
+    DropDownListModule,
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

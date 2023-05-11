@@ -111,9 +111,7 @@ export class AppComponent {
   modelChanged(event: any, user: any) {
     console.log(event);
     console.log(user);
-    this.sportsData = this.sportsData.filter((x: any) => {
-      x.Email.includes(user.Email);
-    });
+
     // if (user.UserName === '' && user.Email === '') {
     //   this.searchResult = [];
     //   return;

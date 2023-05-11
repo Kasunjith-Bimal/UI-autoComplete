@@ -17,11 +17,14 @@
         #UserName="ngModel"
         autocomplete="off"
         required
-        (ngModelChange)="modelChanged($event,user)"
+        (ngModelChange)="modelChanged($event, user)"
       />
 
       <ul>
-        <li *ngFor="let data of sportsData" (click)="selectData(data, user)">
+        <li
+          *ngFor="let data of sportsData | filterPipeUserName: user.UserName"
+          (click)="selectData(data, user)"
+        >
           {{ data.Email }} || {{ data.UserName }}
         </li>
       </ul>
@@ -39,11 +42,14 @@
         #UserEmail="ngModel"
         autocomplete="off"
         required
-        (ngModelChange)="modelChanged($event,user)"
+        (ngModelChange)="modelChanged($event, user)"
       />
 
       <ul>
-        <li *ngFor="let data of sportsData" (click)="selectData(data, user)">
+        <li
+          *ngFor="let data of sportsData | filterPipeEmail: user.Email"
+          (click)="selectData(data, user)"
+        >
           {{ data.Email }} || {{ data.UserName }}
         </li>
       </ul>
