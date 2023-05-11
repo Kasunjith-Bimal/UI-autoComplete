@@ -20,7 +20,7 @@
         (ngModelChange)="modelChanged($event, user)"
       />
 
-      <ul>
+      <ul *ngIf="user.UserName != '' && !user.optionSelected">
         <li
           *ngFor="let data of sportsData | filterPipeUserName: user.UserName"
           (click)="selectData(data, user)"
@@ -45,7 +45,7 @@
         (ngModelChange)="modelChanged($event, user)"
       />
 
-      <ul>
+      <ul *ngIf="user.Email != '' && !user.optionSelected">
         <li
           *ngFor="let data of sportsData | filterPipeEmail: user.Email"
           (click)="selectData(data, user)"

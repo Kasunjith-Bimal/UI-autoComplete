@@ -20,6 +20,7 @@ export class AppComponent {
   constructor(private elementRef: ElementRef) {}
   public searchResult: Object[] = [];
   selectedIndex = -1;
+
   // defined the array of data
   public sportsData: Object[] = [
     { Id: 1, Email: 'k@gmail.com', UserName: 'American' },
@@ -36,9 +37,9 @@ export class AppComponent {
   ];
 
   public users: any[] = [
-    { Id: 1, Email: '', UserName: '' },
-    { Id: 2, Email: '', UserName: '' },
-    { Id: 3, Email: '', UserName: '' },
+    { Id: 1, Email: '', UserName: '', optionSelected: false },
+    { Id: 2, Email: '', UserName: '', optionSelected: false },
+    { Id: 3, Email: '', UserName: '', optionSelected: false },
   ];
 
   //public fieldsForSuggestionName: Object = { value: 'UserName' };
@@ -88,6 +89,7 @@ export class AppComponent {
     if (selectData) {
       this.users.forEach((x) => {
         if (x.Id == user.Id) {
+          x.optionSelected = true;
           x.UserName = selectData.UserName;
           x.Email = selectData.Email;
         }
@@ -109,9 +111,14 @@ export class AppComponent {
   }
 
   modelChanged(event: any, user: any) {
+    this.users.forEach((x) => {
+      if (x.Id == user.Id) {
+        x.optionSelected = false;
+      }
+    });
     console.log(event);
     console.log(user);
-
+    //this.optionSelected = true;
     // if (user.UserName === '' && user.Email === '') {
     //   this.searchResult = [];
     //   return;
