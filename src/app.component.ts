@@ -112,9 +112,9 @@ export class AppComponent {
         if (x.Id == user.Id) {
           if ((type = 'userName')) {
             x.optionSelectedUserName = true;
-            x.optionSelectedEmail = true;
+            // x.optionSelectedEmail = true;
           } else {
-            x.optionSelectedUserName = true;
+            // x.optionSelectedUserName = true;
             x.optionSelectedEmail = true;
           }
           x.optionSelected = true;
@@ -144,8 +144,10 @@ export class AppComponent {
         x.optionSelected = false;
         if ((type = 'userName')) {
           x.optionSelectedUserName = false;
+          //x.optionSelectedEmail = true;
         } else {
           x.optionSelectedEmail = false;
+          //x.optionSelectedUserName = true;
         }
       }
     });
